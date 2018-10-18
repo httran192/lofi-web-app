@@ -1,28 +1,56 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="bg">
+    <img src="https://gdurl.com/OMAt" alt="Girl">
+    <Panel/>
+    <Player/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Panel from './components/Panel.vue'
+import Player from './components/Player.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    Panel,
+    Player
   }
 }
 </script>
 
 <style>
+@font-face {
+  font-family: 'Pixel';
+  src: url('./assets/fonts/depixelbreit-webfont.eot');
+  src: url('./assets/fonts/depixelbreit-webfont.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/depixelbreit-webfont.woff') format('woff'),
+    url('./assets/fonts/depixelbreit-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Pixel';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
+}
+
+html, body, #app, section.section {
+  height: 100%;
+  margin: 0%;
+}
+
+.bg { 
+  /* background-image: url(https://gdurl.com/L8Hl);  */
+  background-image: url(https://gdurl.com/5b8J);
+  height: 100%; 
+  background-position: center;
+  background-repeat: repeat;
 }
 </style>
