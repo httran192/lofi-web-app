@@ -1,8 +1,21 @@
 <template>
-  <div id="app" class="bg">
-    <img src="https://gdurl.com/OMAt" alt="Girl">
+  <div id="app" v-bind:class="{ 'dark': darkMode, 'light': !darkMode }">
+    <img src="./assets/images/girl-1.png">
     <Panel/>
-    <Player/>
+
+    <div>
+      <p>
+        <span style="cursor: default" @click="play">play</span>
+        <span> / </span>
+        <span style="cursor: default" @click="pause">pause</span>
+      </p>
+      <p style="cursor: default" @click="darkMode = !darkMode">invert</p>
+    </div>
+
+    <img v-if="!show" src="./assets/images/rain.gif" @click="show = true">
+    <p v-else>you found me uwu</p>
+
+    <Player ref="player"/>
   </div>
 </template>
 
@@ -11,12 +24,27 @@ import HelloWorld from './components/HelloWorld.vue'
 import Panel from './components/Panel.vue'
 import Player from './components/Player.vue'
 
+import { EventBus } from './main'
+
 export default {
-  name: 'app',
+  data() {
+    return {
+      darkMode: true,
+      show: false
+    }
+  },
   components: {
     HelloWorld,
     Panel,
     Player
+  },
+  methods: {
+    play() {
+      EventBus.$emit('play')
+    },
+    pause() {
+      EventBus.$emit('pause')
+    }
   }
 }
 </script>
@@ -38,7 +66,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  
 }
 
 html, body, #app, section.section {
@@ -46,11 +74,19 @@ html, body, #app, section.section {
   margin: 0%;
 }
 
-.bg { 
-  /* background-image: url(https://gdurl.com/L8Hl);  */
-  background-image: url(https://gdurl.com/5b8J);
+.light { 
+  /* background-image: url("./assets/images/bg-1.png"); */
   height: 100%; 
   background-position: center;
   background-repeat: repeat;
+  color: black;
+}
+
+.dark { 
+  background-image: url("./assets/images/bg-2.png");
+  height: 100%; 
+  background-position: center;
+  background-repeat: repeat;
+  color: white;
 }
 </style>

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import APlayer from '@moefe/vue-aplayer';
 
+export const EventBus = new Vue();
+
 Vue.config.productionTip = false
 
 Vue.use(APlayer, {

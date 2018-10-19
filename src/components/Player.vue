@@ -1,10 +1,13 @@
 <template>
   <div class="center">
-    <aplayer :audio="audio" :lrcType="0" />
+    <aplayer ref="aplayer" :audio="audio" :lrcType="0" style="visibility: hidden"/>
+    <!-- <aplayer ref="aplayer" :audio="audio" :lrcType="0"/> -->
   </div>
 </template>
 
 <script>
+import { EventBus } from '../main'
+
 export default {
   data() {
     return {
@@ -22,6 +25,14 @@ export default {
         lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
       },
     };
+  },
+  created() {
+    EventBus.$on('play', () => {
+      this.$refs.aplayer.play()
+    })
+    EventBus.$on('pause', () => {
+      this.$refs.aplayer.pause()
+    })
   },
 };
 </script>
